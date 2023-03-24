@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <title>Lofibara</title>
+  <style>
+    body {
+      background-image: url('assets/background1.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: 0 0;
+  padding: 300px;
+  font-family: ubuntu;
+}
+
+#skip-forward {
+  width: 36px;
+  height: 36px;
+}
+#play {
+  width: 36px;
+  height: 36px;
+}
+
+.help {
+  width: 36px;
+  margin: 0 auto;
+}
+
+.help .question {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  background-color: #2F4F4F;
+  color: #fff;
+  font-size: 24px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 10px;
+  border: none;
+}
+
+.help .question:hover {
+  background-color: #708090;
+}
+
+
+.help .popup, .help .popup2 {
+  width: 560px;
+  height: 0px;
+  text-align: left;
+  overflow: hidden;
+  position: absolute;
+  background: #eee;
+  opacity: 0;
+  transition: 1s;
+}
+
+.help .popup {
+  left: -260px;
+  top: 50px;
+  overflow-y: auto;
+  max-height: 270px;
+}
+
+.help .popup2 {
+  height: 220px;
+}
+
+.help .popup2 h4 {
+  font-size: 18px;
+  padding: 10px;
+  margin: 0;
+}
+
+.help:hover .popup {
+  opacity: 1;
+  height: 270px;
+}
+
+.help .tell-me p:first-child {
+  color: #317eac;
+  cursor: pointer;
+}
+
+.tell-me {
+  width: 150px;
+}
+
+.help .tell-me:hover .popup2 {
+  top: -220px;
+  opacity: 1;
+}
+
+.help .popup h3 {
+  margin: 0;
+  padding: 10px 0 0 10px;
+  height: 30px;
+  background: #555;
+  color: #fff;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.help .popup p {
+  font-size: 16px;
+  padding: 10px;
+  margin: 0;
+}
+
+.help .popup .popup2 .sub-levels {
+  padding: 0 0 10px 140px;
+}
+
+.help .popup .popup2 .sub-levels strong {
+  font-size: 20px;
+}
+
+.help .popup .popup2 p:nth-child(5) {
+  padding: 20px 0 0 10px;
+}
+
+.help .popup a {
+  text-decoration: none;
+  color: #317eac;
+}
+
+.help .popup a:visited {
+  color: #317eac;
+}
+
+.help .popup p em {
+  font-size: 12px;
+}
+  </style>
+</head>
+<body>
+  <div class="fixed top-0 left-0 p-4">
+    <button id="backgroundButton" class="logo">
+    <img src="assets/logo.png" alt="Logo" class="w-auto h-12">
+  </button>
+  </div>
+  
+
+<div class="fixed top-4 right-4 flex items-center space-x-4">
+  <!-- skip-back button -->
+  <button id="skip-back" class="bg-white p-2 rounded-full shadow-md">
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.71176 4.81895C8.71109 4.20172 10 4.92057 10 6.09515V9.06794C10.1044 8.93679 10.234 8.81991 10.389 8.72419L16.7118 4.81895C17.7111 4.20172 19 4.92057 19 6.09515V13.9056C19 15.0802 17.7111 15.7991 16.7118 15.1818L10.389 11.2766C10.234 11.1809 10.1044 11.064 10 10.9328V13.9056C10 15.0802 8.7111 15.7991 7.71176 15.1818L1.38899 11.2766C0.439979 10.6904 0.439975 9.31035 1.38899 8.72419L7.71176 4.81895Z" fill="#0F172A"/>
+</svg>
+  </button>
+  <!-- play button -->
+  <button id="play">
+    <div class="bg-white p-2 rounded-full shadow-md">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12.75 4C12.3358 4 12 4.33579 12 4.75V15.25C12 15.6642 12.3358 16 12.75 16H13.25C13.6642 16 14 15.6642 14 15.25V4.75C14 4.33579 13.6642 4 13.25 4H12.75Z" fill="#0F172A"/>
+        <path d="M17.75 4C17.3358 4 17 4.33579 17 4.75V15.25C17 15.6642 17.3358 16 17.75 16H18.25C18.6642 16 19 15.6642 19 15.25V4.75C19 4.33579 18.6642 4 18.25 4H17.75Z" fill="#0F172A"/>
+        <path d="M3.28824 4.81859C2.28891 4.20135 1 4.9202 1 6.09478V13.9053C1 15.0798 2.2889 15.7987 3.28824 15.1815L9.61101 11.2762C10.56 10.6901 10.56 9.30998 9.61101 8.72382L3.28824 4.81859Z" fill="#0F172A"/>
+      </svg>
+    </div>
+  </button>
+  
+  <!-- skip-forward button -->
+  <button id="skip-forward" class="bg-white p-2 rounded-full shadow-md w-10 h-10">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.28824 4.81895C2.28891 4.20172 1 4.92057 1 6.09515V13.9056C1 15.0802 2.2889 15.7991 3.28824 15.1818L9.61101 11.2766C9.76598 11.1809 9.89564 11.064 10 10.9328V13.9056C10 15.0802 11.2889 15.7991 12.2882 15.1818L18.611 11.2766C19.56 10.6904 19.56 9.31035 18.611 8.72419L12.2882 4.81895C11.2889 4.20172 10 4.92057 10 6.09515V9.06794C9.89564 8.93679 9.76598 8.81991 9.61101 8.72419L3.28824 4.81895Z" fill="#0F172A"/>
+</svg>
+  </button>
+  <!-- mute button -->
+  <button id="mute" class="bg-white p-2 rounded-full shadow-md ">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9.54747 3.06153C9.82215 3.18021 10 3.4508 10 3.75002V16.25C10 16.5492 9.82215 16.8198 9.54747 16.9385C9.2728 17.0572 8.95387 17.0012 8.73598 16.7962L4.70257 13H3.16724C2.85725 13 2.5792 12.8093 2.46756 12.5201C2.16534 11.7372 2 10.887 2 10C2 9.11302 2.16534 8.26287 2.46756 7.47993C2.5792 7.19074 2.85725 7.00002 3.16724 7.00002H4.70257L8.73598 3.20387C8.95387 2.99879 9.2728 2.94286 9.54747 3.06153Z" fill="#0F172A"/>
+      <path d="M13.2803 7.2197C12.9874 6.92681 12.5126 6.92681 12.2197 7.2197C11.9268 7.51259 11.9268 7.98747 12.2197 8.28036L13.9393 10L12.2197 11.7197C11.9268 12.0126 11.9268 12.4875 12.2197 12.7804C12.5126 13.0733 12.9874 13.0733 13.2803 12.7804L15 11.0607L16.7197 12.7804C17.0126 13.0733 17.4874 13.0733 17.7803 12.7804C18.0732 12.4875 18.0732 12.0126 17.7803 11.7197L16.0607 10L17.7803 8.28036C18.0732 7.98747 18.0732 7.51259 17.7803 7.2197C17.4874 6.92681 17.0126 6.92681 16.7197 7.2197L15 8.93937L13.2803 7.2197Z" fill="#0F172A"/>
+      </svg>
+  </button>
+
+<button id="sound-effects" class="bg-white p-2 rounded-full shadow-md w-10 h-10">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+    <path fill-rule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
+  </svg>
+
+</button>
+<div class="help">
+  <div class="bg-white p-2 rounded-full shadow-md "><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+  </svg>
+  </div>
+
+  <div class="popup">
+    <h3>Welcome to Lofibara!</h3>
+    <p>Click the Lofibara logo to change backgrounds</p>
+    <p>Click the skip backward button to skip to the previous song</p>
+    <p>Click the skip forward button to skip to the next song</p>
+    <p>Click the mute button to mute or unmute Lofibara</p>
+    <p>Click the three lines button to play or mute sound effects</p>
+    <p>Have fun and get some work done!</p>
+    
+
+    
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="relative">
+  <div id="sound-effects-dropdown" class="hidden absolute right-0 mt-6 w-48 bg-white rounded-md shadow-lg py-1">
+    <button class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none">Ocean Waves</button>
+    <button class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none">Fireplace</button>
+    <button class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none">Rain</button>
+    <button class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none">Mechanical Keyboard</button>
+
+  </div>
+</div>
+
+</div>
+
+</div>
+
+
+<audio id="audio" preload="auto"></audio>
+
+<script>
+  
+   const audio = document.getElementById("audio");
+   const playButton = document.getElementById("play");
+   const skipBackButton = document.getElementById("skip-back");
+   const skipForwardButton = document.getElementById("skip-forward");
+   const muteButton = document.getElementById("mute");
+   const songHistory = [];
+   const soundEffectsButton = document.getElementById("sound-effects");
+   const rainButton = document.querySelector('#sound-effects-dropdown button:nth-child(3)');
+   const fireplaceButton = document.querySelector('#sound-effects-dropdown button:nth-child(2)');
+   const oceanWavesButton = document.querySelector('#sound-effects-dropdown button:nth-child(1)');
+   const mechanicalKeyboardButton = document.querySelector('#sound-effects-dropdown button:nth-child(4)');
+   const backgroundButton = document.querySelector('#backgroundButton');
+
+   const rainAudio = new Audio('sounds/rain.wav');
+   const fireplaceAudio = new Audio('sounds/fire.wav');
+   const oceanWavesAudio = new Audio('sounds/ocean.wav');
+   const mechanicalKeyboardAudio = new Audio('sounds/keyboard.wav')
+   const soundEffects = [rainAudio, fireplaceAudio, oceanWavesAudio];
+   soundEffects.forEach(effect => {
+  effect.volume = 0.5;
+  effect.loop = true;
+});
+
+ 
+   const musicFiles = ['track1.mp3', 'track2.mp3', 'track3.mp3']; 
+   let currentIndex = -1;
+ 
+   function playNext() {
+  if (currentIndex !== -1) {
+    songHistory.push(currentIndex);
+  }
+  if (currentIndex === musicFiles.length - 1) {
+    currentIndex = 0;
+  } else {
+    currentIndex++;
+  }
+  audio.src = `lofi/${musicFiles[currentIndex]}`;
+  audio.play();
+}
+
+function playPrevious() {
+  if (songHistory.length > 0) {
+    currentIndex = songHistory.pop();
+    audio.src = `lofi/${musicFiles[currentIndex]}`;
+    audio.play();
+  }
+}
+let isRainPlaying = false;
+
+function playRain() {
+  if (isRainPlaying) {
+    rainAudio.pause();
+    rainAudio.currentTime = 0;
+    isRainPlaying = false;
+  } else {
+    rainAudio.play();
+    isRainPlaying = true;
+  }
+}
+
+let isFireplacePlaying = false;
+
+function playFireplace() {
+  if (isFireplacePlaying) {
+    fireplaceAudio.pause();
+    fireplaceAudio.currentTime = 0;
+    isFireplacePlaying = false;
+  } else {
+    fireplaceAudio.play();
+    isFireplacePlaying = true;
+  }
+}
+
+let isOceanWavesPlaying = false;
+
+function playOceanWaves() {
+  if (isOceanWavesPlaying) {
+    oceanWavesAudio.pause();
+    oceanWavesAudio.currentTime = 0;
+    isOceanWavesPlaying = false;
+  } else {
+    oceanWavesAudio.play();
+    isOceanWavesPlaying = true;
+  }
+}
+
+let isMechanicalKeyboardPlaying = false;
+
+function playMechanicalKeyboard() {
+  if (isMechanicalKeyboardPlaying) {
+    mechanicalKeyboardAudio.pause();
+    mechanicalKeyboardAudio.currentTime = 0;
+    isMechanicalKeyboardPlaying = false;
+  } else {
+    mechanicalKeyboardAudio.play();
+    isMechanicalKeyboardPlaying = true;
+  }
+}
+
+function stopSoundEffects() {
+  soundEffects.forEach(effect => {
+    effect.pause();
+    effect.currentTime = 0;
+  });
+}
+let currentBackgroundIndex = 0;
+const backgrounds = ["background1.png", "background2.png", "background3.png", "background4.png"];
+
+function nextBackground() {
+  currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length;
+  document.body.style.backgroundImage = `url(assets/${backgrounds[currentBackgroundIndex]})`;
+}
+
+   audio.addEventListener("ended", playNext);
+
+
+ 
+   playButton.addEventListener("click", () => {
+     if (audio.paused) {
+       audio.play();
+     } else {
+       audio.pause();
+     }
+   });
+
+   
+ 
+   skipBackButton.addEventListener("click", () => {
+    playPrevious();
+   });
+ 
+   skipForwardButton.addEventListener("click", () => {
+  playNext();
+});
+ 
+   muteButton.addEventListener("click", () => {
+     audio.muted = !audio.muted;
+     stopSoundEffects();
+   });
+ 
+   playNext();
+
+   backgroundButton.addEventListener('click', () => {
+    console.log(document.body.style.backgroundImage)
+    nextBackground();
+    console.log(document.body.style.backgroundImage)
+   });
+   
+
+
+
+  
+
+   soundEffectsButton.addEventListener("click", () => {
+  toggleSoundEffectsDropdown();
+});
+
+function toggleSoundEffectsDropdown() {
+  const dropdown = document.getElementById('sound-effects-dropdown');
+  dropdown.classList.toggle('hidden');
+}
+
+
+function toggleSoundEffectsPopup() {
+  const popup = document.getElementById('sound-effects-popup');
+  popup.classList.toggle('hidden');
+}
+rainButton.addEventListener('click', playRain);
+fireplaceButton.addEventListener('click', playFireplace);
+oceanWavesButton.addEventListener('click', playOceanWaves);
+mechanicalKeyboardButton.addEventListener('click', playMechanicalKeyboard);
+
+   </script>
