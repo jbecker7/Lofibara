@@ -1,0 +1,131 @@
+body {
+  background-image: url('assets/background1.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 0 0;
+padding: 300px;
+font-family: ubuntu;
+}
+
+#skip-forward {
+width: 36px;
+height: 36px;
+}
+#play {
+width: 36px;
+height: 36px;
+}
+
+.help {
+width: 36px;
+margin: 0 auto;
+}
+
+.help .question {
+display: inline-block;
+height: 50px;
+width: 50px;
+background-color: #2F4F4F;
+color: #fff;
+font-size: 24px;
+line-height: 50px;
+text-align: center;
+border-radius: 50%;
+cursor: pointer;
+margin-right: 10px;
+border: none;
+}
+
+.help .question:hover {
+background-color: #708090;
+}
+
+
+.help .popup, .help .popup2 {
+width: 560px;
+height: 0px;
+text-align: left;
+overflow: hidden;
+position: absolute;
+background: #eee;
+opacity: 0;
+transition: 1s;
+}
+
+.help .popup {
+left: -260px;
+top: 50px;
+overflow-y: auto;
+max-height: 270px;
+}
+
+.help .popup2 {
+height: 220px;
+}
+
+.help .popup2 h4 {
+font-size: 18px;
+padding: 10px;
+margin: 0;
+}
+
+.help:hover .popup {
+opacity: 1;
+height: 270px;
+}
+
+.help .tell-me p:first-child {
+color: #317eac;
+cursor: pointer;
+}
+
+.tell-me {
+width: 150px;
+}
+
+.help .tell-me:hover .popup2 {
+top: -220px;
+opacity: 1;
+}
+
+.help .popup h3 {
+margin: 0;
+padding: 10px 0 0 10px;
+height: 30px;
+background: #555;
+color: #fff;
+font-weight: 400;
+font-size: 18px;
+}
+
+.help .popup p {
+font-size: 16px;
+padding: 10px;
+margin: 0;
+}
+
+.help .popup .popup2 .sub-levels {
+padding: 0 0 10px 140px;
+}
+
+.help .popup .popup2 .sub-levels strong {
+font-size: 20px;
+}
+
+.help .popup .popup2 p:nth-child(5) {
+padding: 20px 0 0 10px;
+}
+
+.help .popup a {
+text-decoration: none;
+color: #317eac;
+}
+
+.help .popup a:visited {
+color: #317eac;
+}
+
+.help .popup p em {
+font-size: 12px;
+}
