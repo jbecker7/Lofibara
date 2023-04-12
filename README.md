@@ -1,6 +1,6 @@
 # Lofibara <img src="https://user-images.githubusercontent.com/76632760/227756606-b34e9bba-11d0-4022-a812-1161c270878c.png" width=5%>
 
-<!--Test Comment-->
+Thank you to [Tony](https://github.com/Tonyhaoyu) for helping improve the UI/UX!
 
 Lofibara is a website that helps you create the perfect work environment. Play lofi music and adjust the beautiful sound effects and backgrounds to your liking to help you stay concentrated.
 
